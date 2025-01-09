@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --header-height: 3.5rem;
+
+    /*========== Colors ==========*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --white-color: hsl(0, 0%, 100%);
+    --black-color: hsl(0, 0%, 0%);
+
+    /*========== Font and typography ==========*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: "Montserrat Alternates", sans-serif;
+    --biggest-font-size: 2rem;
+    --big-font-size: 1.5rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+
+    /*========== Font weight ==========*/
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+@media screen and (min-width: 1150px) {
+    :root {
+        --biggest-font-size: 4rem;
+        --big-font-size: 3rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 1rem;
+    }
+
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--black-color);
+    color: var(--white-color);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    max-width: 1120px;
+    margin-inline: 1.5rem;
+}
+
+.main {
+    overflow: hidden;
+}
+
+/*Header e Nav*/
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    z-index: var(--z-fixed);
+}
+
+.nav {
+    position: relative;
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo {
+    color: var(--white-color);
+    font-weight: var(--font-semi-bold);
+}
+
+.nav__toggle,
+.nav__close {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1150px) {
+    .nav__menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        background-color: hsla(0, 0%, 100%, .1);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        width: 80%;
+        height: 100%;
+        padding: 6rem 3rem 0;
+        transition: right .4s;
+    }
+}
+
+.nav__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3rem;
+}
+
+.nav__link {
+    color: var(--white-color);
+    font-weight: var(--font-semi-bold);
+}
+
+.nav__link:hover {
+    text-decoration: underline;
+}
+
+.nav__close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+}
+
+/* mostrar o menu */
+.show-menu {
+    right: 0;
+}
+
+.home__swiper{
+    position: relative;
+    z-index: var(--z-tooltip);
+}
+
+.home__article{
+    position: relative;
+    padding-top: 13rem;
+    width: 100%;
+    height: 100vh;
+}
+
+.home__img,
+.home__shadow,
+.home__content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.home__img{
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+}
+
+.home__shadow{
+    background-color: hsla(0, 0%, 0%, .05);
+    z-index: -1;
+}
+
+.home__data{
+    text-align: center;
+}
+
+.home__subtitle{
+    font-size: var(--h3-font-size);
+    margin-bottom: .5rem;
+}
+
+.home__title{
+    font-size: var(--biggest-font-size);
+    margin-bottom: 2.5rem;
+    font-weight: var(--font-bold);
+}
+
+.home__button{
+    color: var(--white-color);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: .5rem;
+    font-weight: var(--font-semi-bold);
+}
+
+.home__button i{
+    font-size: 1.5rem;
+    font-weight: initial;
+    transition: transform .4s;
+}
+
+.home__button:hover i{
+    transform: translateX(.5rem);
+}
+
+.home__social{
+    position: absolute;
+    z-index: var(--z-tooltip);
+    left: 1.5rem;
+    bottom: 4rem;
+    display: grid;
+    row-gap: 1.5rem;
+}
+
+.home__social-link{
+    color: var(--white-color);
+    font-size: 1.5rem;
+}
+
+.swiper{
+    height: 100vh;
+}
+
+.swiper-pagination{
+    width: initial;
+    height: max-content;
+    top: 6rem;
+    left: initial;
+    right: 4rem;
+    font-size: var(--big-font-size);
+    font-weight: var(--font-semi-bold);
+    display: flex;
+    column-gap: .25rem;
+    align-items: center;
+}
+
+.swiper-pagination-total{
+    font-size: var(--normal-font-size);
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after{
+    content: '';
+}
+
+.swiper-button-prev,
+.swiper-button-next{
+    font-size: 2rem;
+    color: var(--white-color);
+    width: initial;
+    height: initial;
+    position: initial;
+    outline: none;  
+}
+
+.swiper-navigation{
+    position: absolute;
+    z-index: var(--z-tooltip);
+    height: max-content;
+    bottom: 4rem;
+    right: 1.5rem;
+    display: flex;
+    column-gap: 2.5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .nav__menu{
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1150px) {
+    .container{
+        margin-inline: auto;
+    }
+    
+    .nav{
+        height: calc(var(--header-height) + 2rem);
+    }
+    .nav__toggle,
+    .nav__close{
+        display: none;
+    }
+    .nav__menu{
+        width: initial;
+    }
+    .nav__list{
+        flex-direction: row;
+        column-gap: 4rem;
+    }
+
+    .home__data{
+        text-align: initial;
+    }
+    .home__subtitle{
+        margin-bottom: 1rem;
+    }
+    .home__title{
+        margin-bottom: 4.5rem;
+    }
+    .home__content{
+        max-width: 1120px;
+        margin-inline: auto;
+        left: 0;
+        right: 0;
+    }
+    .home__social{
+        left: 0;
+    }
+
+    .swiper-pagination{
+        top: 10rem;
+    }
+    .swiper-pagination-total{
+        font-size: 1.5rem;
+    }
+    .swiper-navigation{
+        right: 0;
+        column-gap: 3.5rem;
+    }
+    .swiper-button-prev,
+    .swiper-button-next{
+        font-size: 3rem;
+    }
+}
+
+@media screen and (min-width: 800px) and (min-height: 800px) {
+    .home__article{
+        padding-top: 17rem;
+    }
+
+    .swiper-pagination{
+        top: 13rem;
+    }
+    
+}
+
+@media screen and (min-width: 2048px) {
+    .container,
+    .home.home__content{
+        max-width: 1550px;
+    }
+
+    .home__swiper,
+    .home__content,
+    .home__img,
+    .home__shadow{
+        max-height: 1000px;
+    }
+}
